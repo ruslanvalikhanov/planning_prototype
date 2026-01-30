@@ -3,15 +3,7 @@
     <div class="login-card">
       <!-- Logo Section -->
       <div class="logo-section">
-        <div class="logo-wrapper">
-          <div class="logo-icon">
-            <img src="/Logo_planning.png" alt="Planning Logo" class="logo-image" />
-          </div>
-          <div class="logo-text">
-            <span class="logo-thermondo">thermondo</span>
-            <span class="logo-planning">planning</span>
-          </div>
-        </div>
+        <img :src="logoPath" alt="Planning Logo" class="logo-image" />
       </div>
 
       <!-- Buttons Section -->
@@ -43,6 +35,8 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
+
 interface Props {
   variant?: 'TC' | 'EC'
 }
@@ -50,6 +44,8 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   variant: 'TC'
 })
+
+const logoPath = computed(() => `${import.meta.env.BASE_URL}Logo_planning.png`)
 
 const handleThermondoLogin = () => {
   // Mock handler for prototype
@@ -86,57 +82,15 @@ const handleSalesforceLogin = () => {
 .logo-section {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   margin-bottom: var(--spacing-xl);
 }
 
-.logo-wrapper {
-  display: grid;
-  grid-template-columns: max-content;
-  grid-template-rows: max-content;
-  width: 100%;
-}
-
-.logo-icon {
-  position: relative;
-  height: 58.247px;
-  width: 321.998px;
-  margin-bottom: 0;
-}
-
 .logo-image {
-  width: 60px;
+  max-width: 100%;
   height: auto;
-  position: absolute;
-  left: 0;
-  top: 0;
   object-fit: contain;
-}
-
-.logo-text {
-  margin-left: 74.06px;
-  margin-top: 58.25px;
-  display: flex;
-  align-items: baseline;
-  gap: 0;
-}
-
-.logo-thermondo {
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-3xl);
-  line-height: var(--line-height-logo);
-  color: var(--color-text);
-}
-
-.logo-planning {
-  font-family: var(--font-family-primary);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-3xl);
-  line-height: var(--line-height-logo);
-  color: var(--color-primary);
-  margin-left: 0.5rem;
 }
 
 .buttons-section {

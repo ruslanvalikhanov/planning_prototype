@@ -22,4 +22,19 @@ const router = createRouter({
   ]
 })
 
+// Handle redirect from 404.html
+router.beforeEach((to, from, next) => {
+  // Check if we have a stored redirect path from 404.html
+  const storedPath = sessionStorage.getItem('vue-router-redirect')
+  if (storedPath) {
+    sessionStorage.removeItem('vue-router-redirect')
+    // Extract the route from the full path (e.g., /planning_prototype/TC -> /TC)
+    const basePath = import.meta.env.BASE_URL
+    const routePath = storedPath.replace(basePath, '') || '/TC'
+    next(routePath)
+  } else {
+    next()
+  }
+})
+
 export default router

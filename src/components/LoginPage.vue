@@ -5,8 +5,7 @@
       <div class="logo-section">
         <div class="logo-wrapper">
           <div class="logo-icon">
-            <!-- Placeholder for logo icon - can be replaced with actual image -->
-            <div class="logo-circle"></div>
+            <img src="/Logo_planning.png" alt="Planning Logo" class="logo-image" />
           </div>
           <div class="logo-text">
             <span class="logo-thermondo">thermondo</span>
@@ -106,15 +105,13 @@ const handleSalesforceLogin = () => {
   margin-bottom: 0;
 }
 
-.logo-circle {
+.logo-image {
   width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 3px solid #e53e3e;
-  background: white;
+  height: auto;
   position: absolute;
   left: 0;
   top: 0;
+  object-fit: contain;
 }
 
 .logo-text {

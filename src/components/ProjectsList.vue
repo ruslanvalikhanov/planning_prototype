@@ -29,6 +29,7 @@
               id="dashboardSearch" 
               class="search-input" 
               placeholder="Projekte filtern"
+              v-model="filterText"
             />
             <div class="search-icon">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +53,7 @@
             </thead>
             <tbody>
               <tr 
-                v-for="(project, index) in projects" 
+                v-for="(project, index) in filteredProjects" 
                 :key="project.number"
                 :class="{ 'row-alt': index % 2 === 1 }"
               >
@@ -60,7 +61,7 @@
                 <td class="cell-customer-name">{{ project.customerName }}</td>
                 <td class="cell-customer-address">{{ project.address }}</td>
                 <td class="cell-action">
-                  <button class="action-button">
+                  <button @click="navigateToDetail(project.number)" class="action-button">
                     <span>Offen</span>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M7.5 5L12.5 10L7.5 15" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -100,13 +101,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
+import { useRouter } from 'vue-router'
 
 interface Project {
   number: string
   customerName: string
   address: string
 }
+
+const props = defineProps<{
+  variant: 'TC' | 'EC'
+}>()
+
+const router = useRouter()
+const filterText = ref('')
 
 const projects = ref<Project[]>([
   { number: 'BV-2025-001', customerName: 'Thomas Müller', address: 'Gartenweg 5, 20095 Hamburg' },
@@ -120,6 +129,24 @@ const projects = ref<Project[]>([
   { number: 'BV-2024-009', customerName: 'Uwe Richter', address: 'Markt 7, 04109 Leipzig' },
   { number: 'BV-2024-010', customerName: 'Kerstin Bauer', address: 'Parkallee 15, 28209 Bremen' }
 ])
+
+const filteredProjects = computed(() => {
+  if (!filterText.value.trim()) {
+    return projects.value
+  }
+  
+  const searchTerm = filterText.value.toLowerCase().trim()
+  return projects.value.filter(project => 
+    project.number.toLowerCase().includes(searchTerm) ||
+    project.customerName.toLowerCase().includes(searchTerm) ||
+    project.address.toLowerCase().includes(searchTerm)
+  )
+})
+
+const navigateToDetail = (projectNumber: string) => {
+  const routeName = props.variant === 'TC' ? 'TCProjectDetail' : 'ECProjectDetail'
+  router.push({ name: routeName, params: { id: projectNumber } })
+}
 </script>
 
 <style scoped>

@@ -2,24 +2,50 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import TCPrototype from '../views/TCPrototype.vue'
 import ECPrototype from '../views/ECPrototype.vue'
 import ProjectsList from '../components/ProjectsList.vue'
+import ProjectDetail from '../components/ProjectDetail.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
       path: '/TC',
-      name: 'TC',
-      component: TCPrototype
+      component: TCPrototype,
+      children: [
+        {
+          path: 'projects',
+          name: 'TCProjects',
+          component: ProjectsList,
+          props: { variant: 'TC' }
+        },
+        {
+          path: 'projects/:id',
+          name: 'TCProjectDetail',
+          component: ProjectDetail,
+          props: { variant: 'TC' }
+        }
+      ]
     },
     {
       path: '/EC',
-      name: 'EC',
-      component: ECPrototype
+      component: ECPrototype,
+      children: [
+        {
+          path: 'projects',
+          name: 'ECProjects',
+          component: ProjectsList,
+          props: { variant: 'EC' }
+        },
+        {
+          path: 'projects/:id',
+          name: 'ECProjectDetail',
+          component: ProjectDetail,
+          props: { variant: 'EC' }
+        }
+      ]
     },
     {
       path: '/projects',
-      name: 'Projects',
-      component: ProjectsList
+      redirect: '/TC/projects' // Redirect old route to TC
     },
     {
       path: '/',

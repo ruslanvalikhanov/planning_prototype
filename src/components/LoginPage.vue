@@ -50,14 +50,14 @@ const router = useRouter()
 const handleThermondoLogin = () => {
   // Mock handler for prototype - navigate to projects page
   console.log(`Thermondo login clicked for variant: ${props.variant}`)
-  router.push('/projects')
+  router.push(`/${props.variant}/projects`)
   // In production, this would trigger SSO flow first
 }
 
 const handleSalesforceLogin = () => {
   // Mock handler for prototype - navigate to projects page
   console.log(`Salesforce login clicked for variant: ${props.variant}`)
-  router.push('/projects')
+  router.push(`/${props.variant}/projects`)
   // In production, this would trigger SSO flow first
 }
 </script>

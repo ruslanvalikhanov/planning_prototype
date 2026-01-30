@@ -3,7 +3,7 @@
     <div class="login-card">
       <!-- Logo Section -->
       <div class="logo-section">
-        <img src="/Logo_planning.png" alt="Planning Logo" class="logo-image" />
+        <img :src="`${baseUrl}Logo_planning.png`" alt="Planning Logo" class="logo-image" />
       </div>
 
       <!-- Buttons Section -->
@@ -42,6 +42,9 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   variant: 'TC'
 })
+
+// Get base URL for GitHub Pages
+const baseUrl = import.meta.env.BASE_URL
 
 const handleThermondoLogin = () => {
   // Mock handler for prototype

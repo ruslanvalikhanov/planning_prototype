@@ -3,7 +3,7 @@
     <div class="login-card">
       <!-- Logo Section -->
       <div class="logo-section">
-        <img :src="`${baseUrl}Logo_planning.png`" alt="Planning Logo" class="logo-image" />
+        <img :src="logoPath" alt="Planning Logo" class="logo-image" />
       </div>
 
       <!-- Buttons Section -->
@@ -43,8 +43,13 @@ const props = withDefaults(defineProps<Props>(), {
   variant: 'TC'
 })
 
-// Get base URL for GitHub Pages
+// Get logo path for public assets
+// In Vite, public assets are served at root, but we need to respect BASE_URL for production
 const baseUrl = import.meta.env.BASE_URL
+// Ensure we have proper path: baseUrl ends with / or we add it
+const logoPath = baseUrl.endsWith('/') 
+  ? `${baseUrl}Logo_planning.png`
+  : `${baseUrl}/Logo_planning.png`
 
 const handleThermondoLogin = () => {
   // Mock handler for prototype
@@ -66,7 +71,7 @@ const handleSalesforceLogin = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-background);
+  background: var(--color-background, #f5f3ef);
   padding: 20px;
 }
 
@@ -120,12 +125,12 @@ const handleSalesforceLogin = () => {
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
+  background-color: var(--color-primary, #046df6);
 }
 
 .btn-secondary {
-  background-color: var(--color-white);
-  border: 1px solid var(--color-border);
+  background-color: var(--color-white, #ffffff);
+  border: 1px solid var(--color-border, #ededed);
 }
 
 .btn-content {
@@ -152,11 +157,11 @@ const handleSalesforceLogin = () => {
 }
 
 .btn-primary .btn-text {
-  color: var(--color-white);
+  color: var(--color-white, #ffffff);
 }
 
 .btn-secondary .btn-text {
-  color: var(--color-text);
+  color: var(--color-text, #1a1a1a);
 }
 
 @media (max-width: 480px) {

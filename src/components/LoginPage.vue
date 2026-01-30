@@ -105,24 +105,32 @@ const handleSalesforceLogin = () => {
   justify-content: center;
   cursor: pointer;
   border: none;
-  transition: opacity 0.2s;
-}
-
-.btn:hover {
-  opacity: 0.9;
-}
-
-.btn:active {
-  opacity: 0.8;
+  transition: background-color 0.2s, border-color 0.2s;
 }
 
 .btn-primary {
   background-color: #2563eb;
 }
 
+.btn-primary:hover {
+  background-color: #0357c4;
+}
+
+.btn-primary:active {
+  background-color: #024193;
+}
+
 .btn-secondary {
   background-color: #ffffff;
   border: 1px solid #333333;
+}
+
+.btn-secondary:hover {
+  border-color: #525252;
+}
+
+.btn-secondary:active {
+  border-color: #404040;
 }
 
 .btn-content {

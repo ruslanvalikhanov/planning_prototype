@@ -29,8 +29,19 @@ router.beforeEach((to, from, next) => {
   if (storedPath) {
     sessionStorage.removeItem('vue-router-redirect')
     // Extract the route from the full path (e.g., /planning_prototype/TC -> /TC)
-    const basePath = import.meta.env.BASE_URL
-    const routePath = storedPath.replace(basePath, '') || '/TC'
+    const basePath = import.meta.env.BASE_URL || '/'
+    // Normalize base path - ensure it ends with / for proper replacement
+    const normalizedBasePath = basePath.endsWith('/') ? basePath : basePath + '/'
+    // Remove base path and ensure route starts with /
+    let routePath = storedPath.replace(normalizedBasePath, '')
+    // Ensure route starts with /
+    if (!routePath.startsWith('/')) {
+      routePath = '/' + routePath
+    }
+    // Validate route - must be /TC or /EC, otherwise default to /TC
+    if (routePath !== '/TC' && routePath !== '/EC') {
+      routePath = '/TC'
+    }
     next(routePath)
   } else {
     next()

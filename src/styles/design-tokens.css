@@ -1,0 +1,151 @@
+/* Design System Tokens */
+
+:root {
+  /* Colors - Semantic Mapping */
+  --color-primary: #046df6;
+  --color-text: #1A1A1A;
+  --color-text-secondary: #666666;
+  --color-border: #EDEDED;
+  --color-background: #F5F3EF;
+  --color-white: #FFFFFF;
+
+  /* Color Palette - Blue (Primary button uses #046df6 which is close to blue-500) */
+  --color-blue-50: #e6f0fe;
+  --color-blue-100: #cce1fd;
+  --color-blue-200: #99c3fb;
+  --color-blue-300: #66a5f9;
+  --color-blue-400: #3387f7;
+  --color-blue-500: #046df6; /* Primary button color */
+  --color-blue-600: #0357c4;
+  --color-blue-700: #024193;
+  --color-blue-800: #022b62;
+  --color-blue-900: #022e67;
+
+  /* Color Palette - Neutral (for text, borders, backgrounds) */
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #ededed; /* Border color */
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #1a1a1a; /* Text color */
+
+  /* Brand Colors - Coral Red */
+  --color-coral-red-50: #fee6eb;
+  --color-coral-red-100: #fccdd7;
+  --color-coral-red-200: #f99baf;
+  --color-coral-red-300: #f66987;
+  --color-coral-red-400: #f3375f;
+  --color-coral-red-500: #f00537;
+  --color-coral-red-600: #c0042c;
+  --color-coral-red-700: #900321;
+  --color-coral-red-800: #600216;
+  --color-coral-red-900: #670218;
+
+  /* Brand Colors - Fire Red */
+  --color-fire-red-50: #fee6e6;
+  --color-fire-red-100: #fdcdcd;
+  --color-fire-red-200: #fb9b9b;
+  --color-fire-red-300: #f96969;
+  --color-fire-red-400: #f73737;
+  --color-fire-red-500: #f50505;
+  --color-fire-red-600: #c40404;
+  --color-fire-red-700: #930303;
+  --color-fire-red-800: #620202;
+  --color-fire-red-900: #580000;
+
+  /* Brand Colors - Tec Violet */
+  --color-violet-50: #f7e6fe;
+  --color-violet-100: #efcdfd;
+  --color-violet-200: #df9bfb;
+  --color-violet-300: #cf69f9;
+  --color-violet-400: #bf37f7;
+  --color-violet-500: #af05f5;
+  --color-violet-600: #8c04c4;
+  --color-violet-700: #690393;
+  --color-violet-800: #460262;
+  --color-violet-900: #4a0265;
+
+  /* Brand Colors - Green */
+  --color-green-50: #eaf7ed;
+  --color-green-100: #d5efdb;
+  --color-green-200: #abdfb7;
+  --color-green-300: #81cf93;
+  --color-green-400: #57bf6f;
+  --color-green-500: #2daf4b;
+  --color-green-600: #248c3c;
+  --color-green-700: #1b692d;
+  --color-green-800: #12461e;
+  --color-green-900: #114a01;
+
+  /* Brand Colors - Yellow */
+  --color-yellow-50: #fef9e6;
+  --color-yellow-100: #fdf3cd;
+  --color-yellow-200: #fbe79b;
+  --color-yellow-300: #f9db69;
+  --color-yellow-400: #f7cf37;
+  --color-yellow-500: #f5c305;
+  --color-yellow-600: #c49c04;
+  --color-yellow-700: #937503;
+  --color-yellow-800: #624e02;
+  --color-yellow-900: #675102;
+
+  /* Brand Colors - Orange */
+  --color-orange-50: #fee6ed;
+  --color-orange-100: #fdcddb;
+  --color-orange-200: #fb9bb7;
+  --color-orange-300: #f96993;
+  --color-orange-400: #f7376f;
+  --color-orange-500: #f5054b;
+  --color-orange-600: #c4043c;
+  --color-orange-700: #93032d;
+  --color-orange-800: #62021e;
+  --color-orange-900: #671102;
+
+  /* Typography */
+  --font-family-primary: 'Montserrat', sans-serif;
+  --font-family-body: 'Open Sans', sans-serif;
+
+  /* Font Sizes */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 28.98px; /* Logo "planning" text */
+  --font-size-4xl: 32px;
+
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700; /* Used for logo and buttons */
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  --line-height-logo: 38.64px; /* Logo line height */
+  --line-height-button: 24px; /* Button text line height */
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px; /* Gap between logo and buttons */
+
+  /* Border Radius */
+  --radius-sm: 2px; /* Button border radius */
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+}

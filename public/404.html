@@ -9,12 +9,17 @@
       var currentPath = window.location.pathname;
       var basePath = '/planning_prototype/';
       
-      // Extract the route from the path (e.g., /planning_prototype/TC -> TC)
+      // Normalize paths - ensure basePath ends with /
       var normalizedBasePath = basePath.endsWith('/') ? basePath : basePath + '/';
-      var route = currentPath.replace(normalizedBasePath, '');
       
-      // Ensure route is valid (TC or EC), otherwise default to TC
-      if (route !== 'TC' && route !== 'EC') {
+      // Remove trailing slash from currentPath for consistent matching
+      var normalizedCurrentPath = currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
+      
+      // Extract the route from the path (e.g., /planning_prototype/TC -> TC)
+      var route = normalizedCurrentPath.replace(normalizedBasePath, '');
+      
+      // Handle edge cases: empty route, or route that doesn't match TC/EC
+      if (!route || route === '' || (route !== 'TC' && route !== 'EC')) {
         route = 'TC';
       }
       

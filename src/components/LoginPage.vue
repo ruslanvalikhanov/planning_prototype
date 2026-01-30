@@ -1,6 +1,11 @@
 <template>
   <div class="login-container">
     <div class="login-card">
+      <!-- Logo Section -->
+      <div class="logo-section">
+        <img src="/Logo_planning.png" alt="Planning Logo" class="logo-image" />
+      </div>
+
       <!-- Buttons Section -->
       <div class="buttons-section">
         <!-- Primary Button -->
@@ -68,6 +73,20 @@ const handleSalesforceLogin = () => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.logo-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.logo-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .buttons-section {

@@ -24,25 +24,19 @@ const router = createRouter({
 
 // Handle redirect from 404.html
 router.beforeEach((to, from, next) => {
-  // Check if we have a stored redirect path from 404.html
-  const storedPath = sessionStorage.getItem('vue-router-redirect')
-  if (storedPath) {
-    sessionStorage.removeItem('vue-router-redirect')
-    // Extract the route from the full path (e.g., /planning_prototype/TC -> /TC)
-    const basePath = import.meta.env.BASE_URL || '/'
-    // Normalize base path - ensure it ends with / for proper replacement
-    const normalizedBasePath = basePath.endsWith('/') ? basePath : basePath + '/'
-    // Remove base path and ensure route starts with /
-    let routePath = storedPath.replace(normalizedBasePath, '')
-    // Ensure route starts with /
+  // Check if we have a redirect query parameter from 404.html
+  const redirectParam = to.query.redirect as string | undefined
+  if (redirectParam) {
+    // Validate route - must be /TC or /EC, otherwise default to /TC
+    let routePath = redirectParam
     if (!routePath.startsWith('/')) {
       routePath = '/' + routePath
     }
-    // Validate route - must be /TC or /EC, otherwise default to /TC
     if (routePath !== '/TC' && routePath !== '/EC') {
       routePath = '/TC'
     }
-    next(routePath)
+    // Navigate to the route and remove the query parameter
+    next({ path: routePath, replace: true })
   } else {
     next()
   }

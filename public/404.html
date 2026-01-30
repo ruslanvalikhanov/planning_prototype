@@ -5,16 +5,21 @@
     <title>Planning Prototype</title>
     <script>
       // Simple redirect for Vue Router on GitHub Pages
-      // Preserve the current path and redirect to index.html
-      // Vue Router will handle routing based on the path
+      // Preserve the current path and redirect to index.html with route as query parameter
       var currentPath = window.location.pathname;
       var basePath = '/planning_prototype/';
-      var indexPath = basePath + 'index.html';
       
-      // Store the original path in sessionStorage so Vue Router can use it
-      sessionStorage.setItem('vue-router-redirect', currentPath);
+      // Extract the route from the path (e.g., /planning_prototype/TC -> TC)
+      var normalizedBasePath = basePath.endsWith('/') ? basePath : basePath + '/';
+      var route = currentPath.replace(normalizedBasePath, '');
       
-      // Redirect to index.html
+      // Ensure route is valid (TC or EC), otherwise default to TC
+      if (route !== 'TC' && route !== 'EC') {
+        route = 'TC';
+      }
+      
+      // Redirect to index.html with route as query parameter
+      var indexPath = basePath + 'index.html?redirect=' + encodeURIComponent('/' + route);
       window.location.replace(indexPath);
     </script>
   </head>

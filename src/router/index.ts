@@ -4,7 +4,7 @@ import ECPrototype from '../views/ECPrototype.vue'
 import ProjectsList from '../components/ProjectsList.vue'
 
 const router = createRouter({
-  history: createWebHashHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(),
   routes: [
     {
       path: '/TC',

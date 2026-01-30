@@ -1,10 +1,10 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import TCPrototype from '../views/TCPrototype.vue'
 import ECPrototype from '../views/ECPrototype.vue'
 import ProjectsList from '../components/ProjectsList.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/TC',
@@ -33,7 +33,7 @@ const router = createRouter({
   ]
 })
 
-// No router guard needed - Vue Router automatically handles routing based on URL pathname
-// Since 404.html is a copy of index.html, Vue Router will read the URL and route accordingly
+// Hash mode routing works on GitHub Pages without requiring 404.html
+// URLs will use hash fragments (e.g., /planning_prototype/#/TC)
 
 export default router

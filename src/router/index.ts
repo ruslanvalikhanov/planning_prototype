@@ -23,30 +23,17 @@ const router = createRouter({
     },
     {
       path: '/',
-      redirect: '/TC' // Default to TC variant, or could show a selection page
+      redirect: '/TC' // Default to TC variant
+    },
+    {
+      // Catch-all route for unknown paths - redirect to default
+      path: '/:pathMatch(.*)*',
+      redirect: '/TC'
     }
   ]
 })
 
-// Handle redirect from 404.html
-router.beforeEach((to, from, next) => {
-  // Check if we have a redirect query parameter from 404.html
-  const redirectParam = to.query.redirect as string | undefined
-  if (redirectParam) {
-    // Validate route - must be /TC, /EC, or /projects, otherwise default to /TC
-    let routePath = redirectParam
-    if (!routePath.startsWith('/')) {
-      routePath = '/' + routePath
-    }
-    // Allow valid routes: /TC, /EC, /projects
-    if (routePath !== '/TC' && routePath !== '/EC' && routePath !== '/projects') {
-      routePath = '/TC'
-    }
-    // Navigate to the route and remove the query parameter
-    next({ path: routePath, replace: true })
-  } else {
-    next()
-  }
-})
+// No router guard needed - Vue Router automatically handles routing based on URL pathname
+// Since 404.html is a copy of index.html, Vue Router will read the URL and route accordingly
 
 export default router

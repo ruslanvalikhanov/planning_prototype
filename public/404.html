@@ -3,33 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>Planning Prototype</title>
-    <script>
-      // Simple redirect for Vue Router on GitHub Pages
-      // Preserve the current path and redirect to index.html with route as query parameter
-      var currentPath = window.location.pathname;
-      var basePath = '/planning_prototype/';
-      
-      // Normalize paths - ensure basePath ends with /
-      var normalizedBasePath = basePath.endsWith('/') ? basePath : basePath + '/';
-      
-      // Remove trailing slash from currentPath for consistent matching
-      var normalizedCurrentPath = currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
-      
-      // Extract the route from the path (e.g., /planning_prototype/TC -> TC)
-      var route = normalizedCurrentPath.replace(normalizedBasePath, '');
-      
-      // Handle edge cases: empty route, or route that doesn't match valid routes
-      // Valid routes: TC, EC, projects
-      if (!route || route === '' || (route !== 'TC' && route !== 'EC' && route !== 'projects')) {
-        route = 'TC';
-      }
-      
-      // Redirect to index.html with route as query parameter
-      var indexPath = basePath + 'index.html?redirect=' + encodeURIComponent('/' + route);
-      window.location.replace(indexPath);
-    </script>
+    <!-- This file is not used in production - the workflow copies index.html to 404.html -->
+    <!-- Vue Router will handle routing automatically based on the URL pathname -->
   </head>
   <body>
-    <p>Redirecting...</p>
+    <p>Loading...</p>
   </body>
 </html>

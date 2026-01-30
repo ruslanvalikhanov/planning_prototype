@@ -40,6 +40,25 @@ jobs:
           # Vue Router will automatically handle routing based on the URL pathname
           if [ -f dist/index.html ]; then
             cp dist/index.html dist/404.html
+            echo "✓ Successfully copied index.html to 404.html"
+          else
+            echo "✗ Error: dist/index.html not found!"
+            exit 1
+          fi
+      
+      - name: Verify 404.html was created
+        run: |
+          if [ -f dist/404.html ]; then
+            echo "✓ 404.html exists"
+            # Verify it's not empty and contains the app div
+            if grep -q '<div id="app"></div>' dist/404.html; then
+              echo "✓ 404.html contains Vue app structure"
+            else
+              echo "✗ Warning: 404.html may not contain Vue app"
+            fi
+          else
+            echo "✗ Error: 404.html was not created!"
+            exit 1
           fi
       
       - name: Setup Pages

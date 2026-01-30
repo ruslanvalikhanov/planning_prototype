@@ -3,7 +3,7 @@
     <div class="login-card">
       <!-- Logo Section -->
       <div class="logo-section">
-        <img :src="logoPath" alt="Planning Logo" class="logo-image" />
+        <img src="/Logo_planning.png" alt="Planning Logo" class="logo-image" />
       </div>
 
       <!-- Buttons Section -->
@@ -35,8 +35,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-
 interface Props {
   variant?: 'TC' | 'EC'
 }
@@ -44,8 +42,6 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   variant: 'TC'
 })
-
-const logoPath = computed(() => `${import.meta.env.BASE_URL}Logo_planning.png`)
 
 const handleThermondoLogin = () => {
   // Mock handler for prototype

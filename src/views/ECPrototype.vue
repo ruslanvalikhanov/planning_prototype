@@ -1,22 +1,22 @@
 <template>
   <div>
-    <LoginPage v-if="!showProjects" variant="EC" />
+    <LoginPage v-if="!hasChildRoute" variant="EC" />
     <RouterView v-else />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed } from 'vue'
 import { useRoute, RouterView } from 'vue-router'
 import LoginPage from '../components/LoginPage.vue'
 
 const route = useRoute()
-const showProjects = ref(false)
 
-// Show projects if we're on a nested route
-watch(() => route.path, (path) => {
-  showProjects.value = path.includes('/projects')
-}, { immediate: true })
+// Check if we're on a child route (projects or project detail)
+// route.matched.length > 1 means we have a child route matched
+const hasChildRoute = computed(() => {
+  return route.matched.length > 1 || route.name === 'ECProjects' || route.name === 'ECProjectDetail'
+})
 </script>
 
 <style scoped>

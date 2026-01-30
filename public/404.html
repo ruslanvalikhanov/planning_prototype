@@ -18,8 +18,9 @@
       // Extract the route from the path (e.g., /planning_prototype/TC -> TC)
       var route = normalizedCurrentPath.replace(normalizedBasePath, '');
       
-      // Handle edge cases: empty route, or route that doesn't match TC/EC
-      if (!route || route === '' || (route !== 'TC' && route !== 'EC')) {
+      // Handle edge cases: empty route, or route that doesn't match valid routes
+      // Valid routes: TC, EC, projects
+      if (!route || route === '' || (route !== 'TC' && route !== 'EC' && route !== 'projects')) {
         route = 'TC';
       }
       

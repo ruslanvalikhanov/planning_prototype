@@ -33,12 +33,13 @@ router.beforeEach((to, from, next) => {
   // Check if we have a redirect query parameter from 404.html
   const redirectParam = to.query.redirect as string | undefined
   if (redirectParam) {
-    // Validate route - must be /TC or /EC, otherwise default to /TC
+    // Validate route - must be /TC, /EC, or /projects, otherwise default to /TC
     let routePath = redirectParam
     if (!routePath.startsWith('/')) {
       routePath = '/' + routePath
     }
-    if (routePath !== '/TC' && routePath !== '/EC') {
+    // Allow valid routes: /TC, /EC, /projects
+    if (routePath !== '/TC' && routePath !== '/EC' && routePath !== '/projects') {
       routePath = '/TC'
     }
     // Navigate to the route and remove the query parameter

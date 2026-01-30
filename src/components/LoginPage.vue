@@ -35,6 +35,8 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+
 interface Props {
   variant?: 'TC' | 'EC'
 }
@@ -43,16 +45,20 @@ const props = withDefaults(defineProps<Props>(), {
   variant: 'TC'
 })
 
+const router = useRouter()
+
 const handleThermondoLogin = () => {
-  // Mock handler for prototype
+  // Mock handler for prototype - navigate to projects page
   console.log(`Thermondo login clicked for variant: ${props.variant}`)
-  // In production, this would trigger SSO flow
+  router.push('/projects')
+  // In production, this would trigger SSO flow first
 }
 
 const handleSalesforceLogin = () => {
-  // Mock handler for prototype
+  // Mock handler for prototype - navigate to projects page
   console.log(`Salesforce login clicked for variant: ${props.variant}`)
-  // In production, this would trigger SSO flow
+  router.push('/projects')
+  // In production, this would trigger SSO flow first
 }
 </script>
 

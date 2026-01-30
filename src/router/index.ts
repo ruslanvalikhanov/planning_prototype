@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import TCPrototype from '../views/TCPrototype.vue'
 import ECPrototype from '../views/ECPrototype.vue'
+import ProjectsList from '../components/ProjectsList.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,11 @@ const router = createRouter({
       path: '/EC',
       name: 'EC',
       component: ECPrototype
+    },
+    {
+      path: '/projects',
+      name: 'Projects',
+      component: ProjectsList
     },
     {
       path: '/',

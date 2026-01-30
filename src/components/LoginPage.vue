@@ -1,11 +1,6 @@
 <template>
   <div class="login-container">
     <div class="login-card">
-      <!-- Logo Section -->
-      <div class="logo-section">
-        <img :src="logoPath" alt="Planning Logo" class="logo-image" />
-      </div>
-
       <!-- Buttons Section -->
       <div class="buttons-section">
         <!-- Primary Button -->
@@ -43,14 +38,6 @@ const props = withDefaults(defineProps<Props>(), {
   variant: 'TC'
 })
 
-// Get logo path for public assets
-// In Vite, public assets are served at root, but we need to respect BASE_URL for production
-const baseUrl = import.meta.env.BASE_URL
-// Ensure we have proper path: baseUrl ends with / or we add it
-const logoPath = baseUrl.endsWith('/') 
-  ? `${baseUrl}Logo_planning.png`
-  : `${baseUrl}/Logo_planning.png`
-
 const handleThermondoLogin = () => {
   // Mock handler for prototype
   console.log(`Thermondo login clicked for variant: ${props.variant}`)
@@ -71,7 +58,7 @@ const handleSalesforceLogin = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-background, #f5f3ef);
+  background: #f2f4f8;
   padding: 20px;
 }
 
@@ -83,31 +70,17 @@ const handleSalesforceLogin = () => {
   justify-content: center;
 }
 
-.logo-section {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: var(--spacing-xl);
-}
-
-.logo-image {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-}
-
 .buttons-section {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: 16px;
 }
 
 .btn {
   width: 100%;
   height: 48px;
-  border-radius: var(--radius-sm);
+  border-radius: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,19 +98,19 @@ const handleSalesforceLogin = () => {
 }
 
 .btn-primary {
-  background-color: var(--color-primary, #046df6);
+  background-color: #2563eb;
 }
 
 .btn-secondary {
-  background-color: var(--color-white, #ffffff);
-  border: 1px solid var(--color-border, #ededed);
+  background-color: #ffffff;
+  border: 1px solid #333333;
 }
 
 .btn-content {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-sm) var(--spacing-md);
+  gap: 4px;
+  padding: 8px 16px;
 }
 
 .btn-icon {
@@ -146,22 +119,23 @@ const handleSalesforceLogin = () => {
   padding: 4px;
   width: 24px;
   height: 24px;
+  flex-shrink: 0;
 }
 
 .btn-text {
-  font-family: var(--font-family-body);
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-button);
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
   white-space: nowrap;
 }
 
 .btn-primary .btn-text {
-  color: var(--color-white, #ffffff);
+  color: #ffffff;
 }
 
 .btn-secondary .btn-text {
-  color: var(--color-text, #1a1a1a);
+  color: #111111;
 }
 
 @media (max-width: 480px) {

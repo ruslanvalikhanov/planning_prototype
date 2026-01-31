@@ -1,6 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import TCPrototype from '../views/TCPrototype.vue'
-import ECPrototype from '../views/ECPrototype.vue'
+import LoginPage from '../components/LoginPage.vue'
 import ProjectsList from '../components/ProjectsList.vue'
 import ProjectDetail from '../components/ProjectDetail.vue'
 
@@ -32,42 +31,43 @@ const router = createRouter({
       path: '/ec/projects/:id',
       redirect: (to) => `/EC/projects/${to.params.id}`
     },
-    // Main routes
+    // Flat routes - TC variant
     {
       path: '/TC',
-      component: TCPrototype,
-      children: [
-        {
-          path: 'projects',
-          name: 'TCProjects',
-          component: ProjectsList,
-          props: { variant: 'TC' }
-        },
-        {
-          path: 'projects/:id',
-          name: 'TCProjectDetail',
-          component: ProjectDetail,
-          props: { variant: 'TC' }
-        }
-      ]
+      name: 'TCLogin',
+      component: LoginPage,
+      props: { variant: 'TC' }
     },
     {
+      path: '/TC/projects',
+      name: 'TCProjects',
+      component: ProjectsList,
+      props: { variant: 'TC' }
+    },
+    {
+      path: '/TC/projects/:id',
+      name: 'TCProjectDetail',
+      component: ProjectDetail,
+      props: { variant: 'TC' }
+    },
+    // Flat routes - EC variant
+    {
       path: '/EC',
-      component: ECPrototype,
-      children: [
-        {
-          path: 'projects',
-          name: 'ECProjects',
-          component: ProjectsList,
-          props: { variant: 'EC' }
-        },
-        {
-          path: 'projects/:id',
-          name: 'ECProjectDetail',
-          component: ProjectDetail,
-          props: { variant: 'EC' }
-        }
-      ]
+      name: 'ECLogin',
+      component: LoginPage,
+      props: { variant: 'EC' }
+    },
+    {
+      path: '/EC/projects',
+      name: 'ECProjects',
+      component: ProjectsList,
+      props: { variant: 'EC' }
+    },
+    {
+      path: '/EC/projects/:id',
+      name: 'ECProjectDetail',
+      component: ProjectDetail,
+      props: { variant: 'EC' }
     },
     {
       path: '/projects',

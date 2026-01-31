@@ -7,6 +7,32 @@ import ProjectDetail from '../components/ProjectDetail.vue'
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
+    // Lowercase redirects for case-insensitive routing
+    {
+      path: '/tc',
+      redirect: '/TC'
+    },
+    {
+      path: '/ec',
+      redirect: '/EC'
+    },
+    {
+      path: '/tc/projects',
+      redirect: '/TC/projects'
+    },
+    {
+      path: '/ec/projects',
+      redirect: '/EC/projects'
+    },
+    {
+      path: '/tc/projects/:id',
+      redirect: (to) => `/TC/projects/${to.params.id}`
+    },
+    {
+      path: '/ec/projects/:id',
+      redirect: (to) => `/EC/projects/${to.params.id}`
+    },
+    // Main routes
     {
       path: '/TC',
       component: TCPrototype,

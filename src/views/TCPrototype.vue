@@ -12,10 +12,11 @@ import LoginPage from '../components/LoginPage.vue'
 
 const route = useRoute()
 
-// Check if we're on a child route (projects or project detail)
-// route.matched.length > 1 means we have a child route matched
+// Check if we're on a child route by checking the path directly
+// This is more reliable than route.matched.length during redirects
 const hasChildRoute = computed(() => {
-  return route.matched.length > 1 || route.name === 'TCProjects' || route.name === 'TCProjectDetail'
+  const path = route.path.toLowerCase()
+  return path.includes('/projects')
 })
 </script>
 
